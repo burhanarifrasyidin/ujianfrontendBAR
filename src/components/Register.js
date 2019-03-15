@@ -1,8 +1,71 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link,Redirect} from 'react-router-dom'
+import { userRegister,loginWithGoogle } from './../1.actions'
+import { connect } from 'react-redux'
+import Loader from 'react-loader-spinner'
+import firebase from 'firebase'
+import { provider } from './../support/google'
+
+
 
 class Register extends React.Component{
+    state = {error : ''}
+
+    // untuk re render system error dri catch di reducer (harus dimatiin server json)
+    componentWillReceiveProps(newProps){
+        if(newProps.error !== ""){
+            this.setState({error : newProps.error})
+        }
+    }
+
+    renderErrorMessege = () => {
+        if(this.state.error !== ""){
+            return <div class="alert alert-danger mt-3" role="alert">
+                        {this.state.error}
+                    </div>
+        }
+    }
+
+    onBtnRegisterClick = () => {
+
+        var username = this.refs.username.value
+        var password = this.refs.password.value
+        var email = this.refs.email.value
+        var phone = this.refs.phone.value
+        if(username === "" || password === ""|| email === "" || phone === ""){
+            this.setState({error: ' Harus diisi semua '})
+        }else{
+            this.props.userRegister(username,password,email,phone)
+        }
+    }
+
+    loginWithGoogle = () => {
+        firebase.auth().signInWithPopup(provider)
+        .then((res) => {
+            console.log(res)
+            this.props.loginWithGoogle(res.user.email)
+        })
+        .catch((err) => console.log(err))
+    }
+
+    // untuk loading bar
+    renderLoadingOrBtn = () => {
+        if(this.props.loading === true){
+            return <Loader
+            type="Bars"
+            color="#00BFFF"
+            height="50"
+            width="50"
+            />
+        }else{
+            return <button type="button"  className="btn btn-primary" style={{width:"300px"}} onClick={this.onBtnRegisterClick}><i className="fas fa-sign-in-alt" />Sign Up!</button>
+        }
+    }
+
     render(){
+        if(this.props.user !== ""){
+            return <Redirect to= '/'/>
+        }
         return(
             <div className="container myBody " style={{minHeight:"600px"}}>
                     <div className="row justify-content-sm-center ml-auto mr-auto mt-3">
@@ -40,7 +103,12 @@ class Register extends React.Component{
                                 
                                 <div className="form-group row">
                                     <div className="col-12">
-                                    <button type="button"    className="btn btn-primary" style={{width:"300px"}} ><i className="fas fa-sign-in-alt" /> Sign Up!</button>
+                                    {this.renderLoadingOrBtn()}
+                                    {/* Untuk login di google mengunakan button */}
+                                    <div>
+                                    <button className='btn border-primary mt-2' onClick={this.loginWithGoogle} style={{width:'300px'}}> Login With Google</button>
+                                    </div>
+                                    {this.renderErrorMessege()}
                                     </div>
                                         
                                 </div>
@@ -53,6 +121,14 @@ class Register extends React.Component{
                 </div>
         )
     }
-}
+} 
 
-export default Register
+const mapStateToProps = (state) => {
+    return {
+        user : state.user.username,
+        loading : state.user.loading,
+        error : state.user.error
+    }
+} 
+
+export default connect(mapStateToProps,{userRegister,loginWithGoogle})(Register)

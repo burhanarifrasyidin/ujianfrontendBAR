@@ -1,5 +1,7 @@
 import React from 'react'
 import Carousel from './carousel'
+import { connect } from 'react-redux'
+import Product from './productList'
 
 
 class Home extends React.Component{
@@ -37,11 +39,20 @@ class Home extends React.Component{
                         <div className="my-4">
                             <Carousel />
                         </div>
+                        {this.props.id}
                     </div>
                 </div>
+                <Product/>
             </div>
         )
     }
 }
 
-export default Home
+const mapStateToProps = (state) => {
+    return {
+        id : state.user.id// user didapat dari index reducer sedangkan id didapat dr userGlobal
+
+    }
+}
+
+export default connect(mapStateToProps)(Home)
