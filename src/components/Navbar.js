@@ -73,7 +73,7 @@ class HeaderKu extends Component {
             } >
             <Navbar color = "light" light expand = "md"fixed = "top" >
             <NavbarBrand className = "ml-2" > < Link to = '/' > < img src = "http://www.logospng.com/images/43/b-logo-logospikecom-famous-and-free-vector-logos-43382.png"
-            alt = "brand" width = "30px" /> </Link> </NavbarBrand >
+            alt = "brand" width = "30px" /></Link> </NavbarBrand >
             <NavbarToggler onClick = {this.toggle}/> <Collapse isOpen = {this.state.isOpen}navbar >
             <Nav className = "ml-auto"
             navbar >
@@ -96,12 +96,13 @@ class HeaderKu extends Component {
             </NavItem> */}
 
                 <NavItem >
-            <Link to = "/login" > < NavLink className = "btn btn-default border-primary"
+            <Link to = "/cart" > 
+            <NavLink className = "btn btn-default border-primary"
             style = {
                 {
                     fontSize: "14px"
                 }
-            } ><i class="fas fa-shopping-cart"></i> Cart </NavLink></Link >
+            } ><i class="fas fa-shopping-cart"></i> Cart <span>{this.props.cart.length>0 ? this.props.cart.length : null}</span></NavLink></Link >
             </NavItem> 
             <UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav caret>
@@ -116,9 +117,12 @@ class HeaderKu extends Component {
                         : 
                         null
                     }
+                    <Link to='/history'>
                     <DropdownItem>
                         History Transaksi
                     </DropdownItem>
+                    </Link>
+                    
                     <DropdownItem>
                         Edit Profile
                     </DropdownItem>
@@ -141,7 +145,8 @@ class HeaderKu extends Component {
 const mapStateToProps =(state)=>{
     return {
         bebas : state.user.username,
-        role : state.user.role
+        role : state.user.role,
+        cart : state.cart.cart
     }
 }
 

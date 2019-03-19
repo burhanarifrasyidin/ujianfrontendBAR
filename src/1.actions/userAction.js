@@ -154,3 +154,9 @@ export const loginWithGoogle = (email) => {
     }
 }
 
+export const cookieChecked = () => {
+    return{
+        type:'COOKIE_CHECKED'
+    }
+}
+

@@ -1,0 +1,150 @@
+{
+  "users": [
+    {
+      "username": "Fikri",
+      "password": "rahasia123",
+      "role": "admin",
+      "cart": [
+        {
+          "nama": "kaos polos grey",
+          "harga": "30000",
+          "discount": "3",
+          "category": "polos",
+          "img": "https://www.garmentsemarang.com/wp-content/uploads/2018/08/MENGETAHUI-HARGA-JUAL-KAOS-OBLONG-POLOS-DI-SEMARANG-981x1030.jpg",
+          "deskripsi": "kaos terbaik & termurah",
+          "id": 1
+        }
+      ],
+      "id": 1
+    },
+    {
+      "id": 2,
+      "username": "Burhan",
+      "password": "rahasia123",
+      "role": "admin"
+    },
+    {
+      "id": 3,
+      "username": "Andi",
+      "password": "rahasia123",
+      "role": "user"
+    },
+    {
+      "username": "sonny",
+      "password": "123",
+      "email": "sonny@gmail.com",
+      "phone": "082112131617",
+      "role": "user",
+      "id": 4
+    },
+    {
+      "username": "anggu",
+      "password": "12345",
+      "email": "anggu@gmail.com",
+      "phone": "08769876543",
+      "role": "user",
+      "id": 5
+    },
+    {
+      "username": "didi",
+      "password": "123",
+      "email": "didi@gmail.com",
+      "phone": "098765432",
+      "role": "user",
+      "id": 6
+    },
+    {
+      "username": "burhan.d3mits@gmail.com",
+      "role": "user",
+      "id": 7
+    }
+  ],
+  "products": [
+    {
+      "id": 4,
+      "nama": "kaos polos biru",
+      "harga": 25000,
+      "discount": 30,
+      "deskripsi": "kaos terbaik & termurah",
+      "img": "https://s.kaskus.id/r480x480/images/fjb/2018/05/21/kaos_polos_biru_muda_lengan_pendek_8491816_1526868889.png",
+      "category": "polos"
+    },
+    {
+      "nama": "kaos lengan panjang",
+      "harga": "22000",
+      "discount": "15",
+      "category": "polos",
+      "img": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/kaosyes_kaosyes-kaos-polos-t-shirt-raglan-lengan-3-4-abu-merah_full06.jpg",
+      "deskripsi": "kaos terbaik",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "nama": "kaos polos orange",
+      "harga": 25000,
+      "discount": 20,
+      "deskripsi": "kaos terbaik & termurah",
+      "img": "https://polos.co.id/images/color-available/76000/76000-gold.png",
+      "category": "polos"
+    },
+    {
+      "nama": "baju putih",
+      "harga": "15000",
+      "discount": "10",
+      "category": "polos",
+      "img": "https://www.jakartanotebook.com/images/products/99/63/19062/2/kaos-polos-katun-pria-lengan-pendek-o-neck-size-l-85606-or-t-shirt-black-11.jpg",
+      "deskripsi": "kaos terbaik",
+      "id": 7
+    },
+    {
+      "nama": "baju merah",
+      "harga": "20000",
+      "discount": "15",
+      "category": "polos",
+      "img": "https://pabrikkaosdistro.com/wp-content/uploads/2018/04/GUNAKAN-CARA-INI-UNTUK-MENDAPATKAN-GROSIR-KAOS-POLOS-TERBAIK.jpg",
+      "deskripsi": "kaos terbaik & termurah",
+      "id": 8
+    },
+    {
+      "nama": "baju hijau",
+      "harga": "15000",
+      "discount": "0",
+      "category": "polos",
+      "img": "https://www.jakartanotebook.com/images/products/99/63/19057/8/kaos-polos-katun-wanita-lengan-pendek-o-neck-size-l-85601-or-t-shirt-green-1.jpg",
+      "deskripsi": "kaos terbaik & murah",
+      "id": 9
+    },
+    {
+      "nama": "baju grey kerah",
+      "harga": "25000",
+      "discount": "0",
+      "category": "kerah",
+      "img": "https://www.konveksibajujakarta.com/wp-content/uploads/2018/12/MEMILIH-TOKO-JUAL-KAOS-POLO-SHIRT-POLOS-COTTON-COMBED-30S-JAKARTA-BERPENGALAMAN-1030x1030.jpg",
+      "deskripsi": "kaos terbaik",
+      "id": 10
+    }
+  ],
+  "cart": [],
+  "history": [
+    {
+      "tanggal": "19/03/2019",
+      "username": "Fikri",
+      "id_user": 1,
+      "jumlahItem": 1,
+      "cart": [
+        {
+          "id_user": 1,
+          "qty": 3,
+          "nama": "baju merah",
+          "harga": "20000",
+          "discount": "15",
+          "category": "polos",
+          "img": "https://pabrikkaosdistro.com/wp-content/uploads/2018/04/GUNAKAN-CARA-INI-UNTUK-MENDAPATKAN-GROSIR-KAOS-POLOS-TERBAIK.jpg",
+          "deskripsi": "kaos terbaik & termurah",
+          "totalHarga": 51000
+        }
+      ],
+      "id": 1
+    }
+  ]
+}

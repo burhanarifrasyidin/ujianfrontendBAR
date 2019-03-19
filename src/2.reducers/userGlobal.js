@@ -3,7 +3,8 @@ const INITIAL_STATE = {
     username: "",
     error: "",
     loading: false,
-    role : ''
+    role : '',
+    cookie: false
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -45,31 +46,35 @@ export default (state = INITIAL_STATE, action) => {
         case 'LOGIN_SUCCESS' :
         return {
             ...INITIAL_STATE,
-            username : action.payload.username, role : action.payload.role, id : action.payload.id
+            username : action.payload.username, role : action.payload.role, id : action.payload.id,cookie : true
         }
         case 'LOADING' :
         return {
             ...INITIAL_STATE,
-            loading: true
+            loading: true,cookie : true
         }
         case 'USER_NOT_FOUND' :
         return {
-            ...INITIAL_STATE,
+            ...INITIAL_STATE,cookie : true,
             error: 'username atau password salah'
         }
         case 'SYSTEM_ERROR' :
         return {
-            ...INITIAL_STATE,
+            ...INITIAL_STATE,cookie : true,
             error: 'System error, coba lagi'
         }
         case 'RESET_USER' :
         return {
-            ...INITIAL_STATE
+            ...INITIAL_STATE,cookie : true,
         }
         case 'USERNAME_NOT_AVAILABLE' :
         return {
-            ...INITIAL_STATE,
+            ...INITIAL_STATE,cookie : true,
             error: 'username not available'
+        }
+        case 'COOKIE_CHECKED' :
+        return {
+            ...state,cookie : true
         }
         default :
         return state

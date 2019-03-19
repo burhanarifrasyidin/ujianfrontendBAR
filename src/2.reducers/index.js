@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux'
 import user from './userGlobal'
-import Product from './userGlobal'
+import cart from './cartGlobal'
 
 export default combineReducers({
     user : user,
-    Product : Product // untuk membuat manage(list product) di navbar sebagai admin
+    cart : cart
 })

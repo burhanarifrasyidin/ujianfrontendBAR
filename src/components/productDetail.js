@@ -2,6 +2,9 @@ import React from 'react'
 import Axios from 'axios';
 import { urlApi } from '../support/urlApi';
 import { connect } from 'react-redux';
+import {addToCart} from './../1.actions';
+import swal from 'sweetalert';
+
 
 
 class ProductDetail extends React.Component{
@@ -19,12 +22,25 @@ class ProductDetail extends React.Component{
         .catch((err) => console.log(err))
     }
 
+    addBtnCart = () => {
+        var qty = parseInt(this.refs.inputQty.value)
+        var note = this.refs.note.value
+        var newObj={}
+        newObj={...this.state.product,id_product:this.state.product.id,id_user : this.props.id, qty:qty,note:note}
+        delete newObj.id
+        swal("Add To Cart!!", "Selamat Anda Berhasil Add Product", "success");
+        this.props.addToCart(newObj)
+
+
+    }
+
     qtyValidation = () => {
         var qty = this.refs.inputQty.value
         if(qty < 1){
             this.refs.inputQty.value = 1
         }
     }
+
     render(){
         var{nama,harga,discount,img,deskripsi} = this.state.product
         return(
@@ -53,7 +69,7 @@ class ProductDetail extends React.Component{
                             </div>
                             <div className='col-md-6'>
                                 <div style={{marginTop:'20px',color:'#606060',fontWeight:'700',fontSize:'14px'}}>Catatan Untuk Penjual (Optional)</div>
-                                <input type='text' placeholder='Ex : Contoh Warna Putih, Ukuran XL, Edisi ke-2'className='form-control' style={{width:'100%',marginTop:'10px'}}></input>   
+                                <input ref ='note' type='text' placeholder='Ex : Contoh Warna Putih, Ukuran XL, Edisi ke-2'className='form-control' style={{width:'100%',marginTop:'10px'}}></input>   
                             </div>
                         </div>
                         <div className='row mt-4'>
@@ -72,7 +88,7 @@ class ProductDetail extends React.Component{
                          <div className='row mt-4'>
                          <input type='button' className='btn border-secondary col-md-2 ml-3' value='Add To Wishlist'></input>
                          <input type='button' className='btn btn-primary col-md-2 ml-3' value='Beli Sekarang'></input>
-                         <input type='button' className='btn btn-success col-md-3 ml-3' value='Masukkan Ke Keranjang'></input>
+                         <input type='button' className='btn btn-success col-md-3 ml-3' value='Add To Cart' onClick={this.addBtnCart}></input>
                      </div>
                         }
                     </div>
@@ -85,8 +101,9 @@ class ProductDetail extends React.Component{
 const mapStateToProps = (state) => {
     return{
       username : state.user.username,
-
+      id : state.user.id,
+      cart : state.cart.cart
     }
   }
 
-export default connect (mapStateToProps)(ProductDetail);
+export default connect (mapStateToProps,{addToCart})(ProductDetail);
